@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_manage_location">Manage Location</string>
+    <string name="nav_setting">Settings</string>
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Open Drawer</string>
+    <string name="about">About</string>
+    <string name="loading">Loading......</string>
+    <string name="my_cities">My Cities</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="temp">Temperature</string>
+    <string name="Farenheight">F</string>
+    <string name="Celcius">C</string>
+    <string name="format_twelve">12</string>
+    <string name="format_twenty_four">24</string>
+    <string name="time_format">Time Format</string>
+    <string name="System">System</string>
+    <string name="wind_format">Wind Speed</string>
+    <string name="kmph">km/h</string>
+    <string name="Pressure">Pressure</string>
+    <string name="mm">MM</string>
+    <string name="Precipitation">Precipitation</string>
+    <string name="mb">MB</string>
+    <string name="api">API</string>
+    <string name="mh">mh</string>
+    <string name="in">in</string>
+    <string name="adunitid">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="app_id">ca-app-pub-8127434234485566~8859887943</string>
+    <string name="forecast">10 Day Forecast</string>
+    <string name="nav_forecast">10 Day Forecast</string>
+
+
+    <string-array name="nav_item_titles">
+        <item>@string/nav_home</item>
+        <item>@string/nav_manage_location</item>
+        <item>@string/nav_forecast</item>
+        <item>@string/nav_setting</item>
+    </string-array>
+</resources>

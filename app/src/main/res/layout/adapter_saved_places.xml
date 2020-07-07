@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_under_line">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".9"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_eight"
+        android:layout_marginEnd="@dimen/dp_sixteen">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/dp_sixteen"
+            android:text="Mohali"
+            android:id="@+id/textViewTitle"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mohali"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/dp_four"
+            android:id="@+id/textViewSubTitle"/>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".1"
+        android:layout_gravity="bottom"
+        android:id="@+id/imageViewPopup"
+        android:src="@drawable/ic_more"/>
+
+</LinearLayout>

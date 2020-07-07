@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/LinearLayoutSetting">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_under_line"
+        android:padding="@dimen/dp_twelve">
+
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="@dimen/dp_twenty_four"
+            android:layout_height="@dimen/dp_twenty_four"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_temp_setting"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView1"
+            android:text="@string/temp"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginStart="@dimen/dp_eight"/>
+        <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggle_temp"
+            app:textToggleRight="@string/Farenheight"
+            app:textToggleLeft="@string/Celcius"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+        </com.llollox.androidtoggleswitch.widgets.ToggleSwitch>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_under_line"
+        android:padding="@dimen/dp_twelve">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/dp_twenty_four"
+            android:layout_height="@dimen/dp_twenty_four"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_time_format"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView2"
+            android:text="@string/time_format"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginStart="@dimen/dp_eight"/>
+        <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggele_time"
+            app:textToggleRight="@string/format_twenty_four"
+            app:textToggleLeft="@string/format_twelve"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+
+        </com.llollox.androidtoggleswitch.widgets.ToggleSwitch>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_under_line"
+        android:padding="@dimen/dp_twelve">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/dp_twenty_four"
+            android:layout_height="@dimen/dp_twenty_four"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_speed_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView4"
+            android:text="@string/wind_format"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginStart="@dimen/dp_eight"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/kmph"
+            android:id="@+id/textViewWindSpeed"
+            android:textColor="@android:color/black"
+            android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewClicked"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_under_line"
+        android:padding="@dimen/dp_twelve">
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="@dimen/dp_twenty_four"
+            android:layout_height="@dimen/dp_twenty_four"
+            android:layout_centerVertical="true"
+            android:src="@drawable/iconpressure"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView5"
+            android:text="@string/Pressure"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginStart="@dimen/dp_eight"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/mb"
+            android:id="@+id/textViewPressure"
+            android:textColor="@android:color/black"
+            android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewClicked"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_under_line"
+        android:padding="@dimen/dp_twelve">
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="@dimen/dp_twenty_four"
+            android:layout_height="@dimen/dp_twenty_four"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_precip"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView6"
+            android:text="@string/Precipitation"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginStart="@dimen/dp_eight"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/mm"
+            android:id="@+id/textViewPrecip"
+            android:textColor="@android:color/black"
+            android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="onViewClicked"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/lightGray"
+    android:paddingBottom="@dimen/dp_four">
+    <LinearLayout
+        android:layout_width="@dimen/dp_one_twenty"
+        android:padding="@dimen/dp_six"
+        android:gravity="center"
+        android:background="@color/header_bg"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="SUN"
+            android:id="@+id/textViewDays"/>
+    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_one_hundred"
+            android:padding="@dimen/dp_sixteen"
+            android:id="@+id/imageView_weather_day"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:id="@+id/textViewMaxMin"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:id="@+id/textWeatherInfoForDay"/>
+
+
+
+
+
+</LinearLayout>

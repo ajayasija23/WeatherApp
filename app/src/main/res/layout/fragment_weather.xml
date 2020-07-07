@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_eight">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/dp_one_eighty"
+                    android:layout_height="@dimen/dp_one_eighty"
+                    android:layout_marginTop="@dimen/dp_one_twenty"
+                    android:layout_alignParentLeft="true"
+                    android:elevation="8dp"
+                    android:id="@+id/imageView_weather"
+                    android:padding="@dimen/dp_sixteen"/>
+
+                <!--<ImageView
+                    android:layout_width="@dimen/dp_one_eighty"
+                    android:layout_height="@dimen/dp_one_eighty"
+                    android:layout_marginTop="@dimen/dp_one_hundred"
+                    android:elevation="@dimen/ep_eight"
+                    android:id="@+id/imageView_weather"
+                    android:padding="@dimen/dp_sixteen" />-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Updated JULY 31 11:00 AM"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center|start"
+                    android:layout_marginTop="@dimen/two_dp"
+                    android:id="@+id/textViewLastUpdate"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delhi"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentLeft="true"
+                    android:drawableLeft="@drawable/icon_gps"
+                    android:layout_marginTop="@dimen/two_dp"
+                    android:drawablePadding="@dimen/dp_four"
+                    android:layout_toStartOf="@+id/textViewLastUpdate"
+                    android:id="@+id/textCityAddress"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:00 AM"
+                    android:layout_below="@+id/textCityAddress"
+                    android:textColor="@android:color/white"
+                    android:gravity="center|start"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/two_dp"
+                    android:id="@+id/textTime"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textTime"
+                    android:id="@+id/textTemprature"
+                    android:text="32 C"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/dp_thirty"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/dp_thirty_six"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textTemprature"
+                    android:id="@+id/textFeelsLike"
+                    android:text="FEELS LIKE 31 C"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textFeelsLike"
+                    android:id="@+id/textWeatherInfo"
+                    android:text="Moderate Rain With ThunderStorm"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:gravity="end"
+                    android:layout_toEndOf="@id/imageView_weather"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textPerception"
+                    android:layout_below="@id/textWeatherInfo"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="Perception: 100%"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textPressure"
+                    android:layout_below="@id/textPerception"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="Pressure: 1012 hpd"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textVisibility"
+                    android:layout_below="@+id/textPressure"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="Visibility: 1012 hpd"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textUVIndex"
+                    android:layout_below="@id/textVisibility"
+                    android:layout_marginTop="@dimen/dp_twenty_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="UV Index: 0.5"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textisDay"
+                    android:layout_below="@+id/textUVIndex"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="Is Day: yes"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textWindDir"
+                    android:layout_below="@+id/textisDay"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:text="Wind Dir: nnw"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textCloudCover"
+                    android:layout_below="@id/textVisibility"
+                    android:layout_marginTop="@dimen/dp_twenty_eight"
+                    android:textColor="@android:color/white"
+                    android:text="Cloud Cover: 100%"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textHumidity"
+                    android:layout_below="@+id/textCloudCover"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:text="Humidity: 80%"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textWind"
+                    android:layout_below="@+id/textHumidity"
+                    android:layout_marginTop="@dimen/dp_eight"
+                    android:textColor="@android:color/white"
+                    android:text="Wind: 12.9 km/h"/>
+
+
+            </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dp_sixteen"
+                android:gravity="center"
+                android:background="@color/lightGray">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recyclerFiveDays"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@android:color/white">
+                    <com.google.android.gms.ads.AdView
+                        xmlns:ads="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/adView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        ads:adSize="BANNER"
+                        ads:adUnitId="@string/adunitid">
+                    </com.google.android.gms.ads.AdView>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
