@@ -108,30 +108,6 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
-        adView.setAdListener(new AdListener()
-        {
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-                switch (i)
-                {
-                    case ERROR_CODE_INTERNAL_ERROR:
-                        Log.d("Internal error","can not load ad");
-                        break;
-                    case ERROR_CODE_INVALID_REQUEST:
-                        Log.d("invalid request error","can not load ad");
-                        break;
-                    case ERROR_CODE_NETWORK_ERROR:
-                        Log.d("Network error","can not load ad");
-                        break;
-                    case ERROR_CODE_NO_FILL:
-                        Log.d("No fill error","can not load ad");
-                        break;
-                }
-
-            }
-        });
-
         Bundle bundle=getArguments();
         latitude=bundle.getString("latitude");
         longitude=bundle.getString("longitude");
