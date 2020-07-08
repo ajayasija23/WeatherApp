@@ -144,7 +144,7 @@ public class SplashActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void navigateToHomeScreen()
+    public void navigateToHomeScreen()
     {
         appLocationService=new AppLocationService(this);
         new Handler().postDelayed(new Runnable() {

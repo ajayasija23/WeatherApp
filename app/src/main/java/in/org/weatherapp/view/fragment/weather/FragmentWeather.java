@@ -1,6 +1,7 @@
 package in.org.weatherapp.view.fragment.weather;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -35,6 +37,11 @@ import in.org.weatherapp.view.model.WeatherBit;
 import in.org.weatherapp.view.utils.Constants;
 import in.org.weatherapp.view.utils.FrequentFunction;
 import in.org.weatherapp.view.utils.SharedPrefers;
+
+import static com.google.android.gms.ads.AdRequest.ERROR_CODE_INTERNAL_ERROR;
+import static com.google.android.gms.ads.AdRequest.ERROR_CODE_INVALID_REQUEST;
+import static com.google.android.gms.ads.AdRequest.ERROR_CODE_NETWORK_ERROR;
+import static com.google.android.gms.ads.AdRequest.ERROR_CODE_NO_FILL;
 
 public class FragmentWeather extends BaseFragment implements WeatherFragmentView {
 
@@ -100,6 +107,30 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        adView.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                switch (i)
+                {
+                    case ERROR_CODE_INTERNAL_ERROR:
+                        Log.d("Internal error","can not load ad");
+                        break;
+                    case ERROR_CODE_INVALID_REQUEST:
+                        Log.d("invalid request error","can not load ad");
+                        break;
+                    case ERROR_CODE_NETWORK_ERROR:
+                        Log.d("Network error","can not load ad");
+                        break;
+                    case ERROR_CODE_NO_FILL:
+                        Log.d("No fill error","can not load ad");
+                        break;
+                }
+
+            }
+        });
 
         Bundle bundle=getArguments();
         latitude=bundle.getString("latitude");

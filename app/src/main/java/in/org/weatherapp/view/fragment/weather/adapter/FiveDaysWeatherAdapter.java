@@ -41,20 +41,20 @@ public class FiveDaysWeatherAdapter extends RecyclerView.Adapter<FiveDaysWeather
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         if(SharedPrefers.getDataFromPrefs(Constants.TEMPERATURE).equalsIgnoreCase(Constants.FARENHEIGHT))
-            holder.textViewMaxMin.setText(FrequentFunction.celsiusToFahrenheit(listBeanList.get(position).getMain().getTempMin())+"/"+
-                    FrequentFunction.celsiusToFahrenheit(listBeanList.get(position).getMain().getTempMax())+" °F");
+            holder.textViewMaxMin.setText(FrequentFunction.celsiusToFahrenheit(listBeanList.get(position+1).getMain().getTempMin())+"/"+
+                    FrequentFunction.celsiusToFahrenheit(listBeanList.get(position+1).getMain().getTempMax())+" °F");
         else
-            holder.textViewMaxMin.setText(listBeanList.get(position).getMain().getTempMin()+"/"+
-                listBeanList.get(position).getMain().getTempMax()+" °C");
+            holder.textViewMaxMin.setText(listBeanList.get(position+1).getMain().getTempMin()+"/"+
+                listBeanList.get(position+1).getMain().getTempMax()+" °C");
 
-        holder.textViewWeather.setText(listBeanList.get(position).getWeather().get(0).getDescription());
-        String iconUrl="http://openweathermap.org/img/w/" + listBeanList.get(position).getWeather().get(0).getIcon() + ".png";
+        holder.textViewWeather.setText(listBeanList.get(position+1).getWeather().get(0).getDescription());
+        String iconUrl="http://openweathermap.org/img/w/" + listBeanList.get(position+1).getWeather().get(0).getIcon() + ".png";
         Glide.with(mContext).load(iconUrl).into(holder.imageViewWeather);
 
-        if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT)==Constants.TIME_FORMAT_12)
-            holder.textViewDays.setText(FrequentFunction.getDayTime12(listBeanList.get(position).getDt()));
+        if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_12))
+            holder.textViewDays.setText(FrequentFunction.getDayTime12(listBeanList.get(position+1).getDt()));
         else
-            holder.textViewDays.setText(FrequentFunction.getDayTime(listBeanList.get(position).getDtTxt()));
+            holder.textViewDays.setText(FrequentFunction.getDayTime(listBeanList.get(position+1).getDtTxt()));
     }
 
     @Override

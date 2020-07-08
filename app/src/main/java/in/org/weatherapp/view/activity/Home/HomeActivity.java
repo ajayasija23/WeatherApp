@@ -1,5 +1,6 @@
 package in.org.weatherapp.view.activity.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.org.weatherapp.R;
 import in.org.weatherapp.view.activity.BaseActivity;
+import in.org.weatherapp.view.activity.splash.SplashActivity;
 import in.org.weatherapp.view.fragment.forecast.WeatherForecast;
 import in.org.weatherapp.view.fragment.home.FragmentHome;
 import in.org.weatherapp.view.fragment.location.FragmentLocation;
@@ -41,10 +43,12 @@ public class HomeActivity extends BaseActivity {
     private int mNavIndex = 0;
     private String CURRENT_TAG = Constants.TAG_HOME;
     private Handler mHandler;
+    private SplashActivity splashActivity;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        splashActivity=new SplashActivity();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -63,12 +67,36 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(mNavIndex==0)
-        {
-            getMenuInflater().inflate(R.menu.menu_item_three_dot,menu);
 
-        }
+            getMenuInflater().inflate(R.menu.menu_item_three_dot,menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.action_refresh:
+                loadFragment();
+                return true;
+            case R.id.action_share:
+                share();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private void share() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://i.diawi.com/cTNb7b");
+        sendIntent.setType("text/html");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+
     }
 
     private void loadFragment()

@@ -63,10 +63,10 @@ public class FragmentSetting extends BaseFragment {
        else
            toggleTemp.setCheckedPosition(1);
 
-        if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_24))
-            toggeleTime.setCheckedPosition(1);
-        else
+        if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_12))
             toggeleTime.setCheckedPosition(0);
+        else
+            toggeleTime.setCheckedPosition(1);
     }
 
     private void setTextData() {
@@ -95,7 +95,6 @@ public class FragmentSetting extends BaseFragment {
 
 
         });
-
         toggeleTime.setOnChangeListener(i -> {
             if (i == 0)
                 SharedPrefers.setDatainPrefs(Constants.TIME_FORMAT, Constants.TIME_FORMAT_12);
