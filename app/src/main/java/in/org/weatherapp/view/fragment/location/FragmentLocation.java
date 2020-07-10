@@ -3,12 +3,14 @@ package in.org.weatherapp.view.fragment.location;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -77,9 +79,19 @@ public class FragmentLocation extends BaseFragment implements
     }
 
     public void onViewClicked() {
+
+
         List<Place.Field> fields= Arrays.asList(Place.Field.LAT_LNG,Place.Field.NAME,Place.Field.ID,Place.Field.ADDRESS);
-        Intent intent =new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fields).build(getActivity());
-        startActivityForResult(intent,Constants.AUTO_COMPLETE_REQUEST_CODE);
+        if(savedPlacesList.size()<10) {
+            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).build(getActivity());
+            startActivityForResult(intent, Constants.AUTO_COMPLETE_REQUEST_CODE);
+        }
+        else
+        {
+           Toast toast=Toast.makeText(getActivity(),"you can not add more than 10 locations",Toast.LENGTH_SHORT);
+           toast.show();
+
+        }
     }
 
     @Override

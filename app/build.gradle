@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -61,7 +62,7 @@ dependencies {
    implementation 'zh.wang.android:yweathergetter4a:1.3.0'
 
     //firebase
-    implementation 'com.google.firebase:firebase-analytics:17.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
 
     //circular images
     implementation 'de.hdodenhof:circleimageview:3.1.0'
@@ -78,7 +79,7 @@ dependencies {
     //toggle library
     implementation 'com.llollox:androidtoggleswitch:2.0.1'
     //ads
-    implementation 'com.google.android.gms:play-services-ads:16.0.0'
+    implementation 'com.google.android.gms:play-services-ads:19.2.0'
 
 
 }

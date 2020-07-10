@@ -91,7 +91,7 @@ public class HomeActivity extends BaseActivity {
     private void share() {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://i.diawi.com/cTNb7b");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://drive.google.com/file/d/1TZqejyZj_EGeQNO8IM6IotJQoMIRj8bZ/view?usp=sharing");
         sendIntent.setType("text/html");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);

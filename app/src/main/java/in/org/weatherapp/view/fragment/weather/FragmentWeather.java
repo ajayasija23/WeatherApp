@@ -18,6 +18,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 
 
 import java.util.Arrays;
@@ -105,6 +106,11 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
         //initialinzin ad view
         MobileAds.initialize(getActivity(),getActivity().getString(R.string.adunitid));
 
+        List<String> testDeviceIds = Arrays.asList("439ADAA2A9B0D14403799BFEA3C7B387");
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
+
+        MobileAds.setRequestConfiguration(configuration);
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 

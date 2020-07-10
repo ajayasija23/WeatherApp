@@ -29,7 +29,6 @@ public class SavedPlacesAdapter extends RecyclerView.Adapter<SavedPlacesAdapter.
         this.savedPlacesList=savedPlaces;
         this.placeInterface=placeInterface;
 
-
     }
 
     @NonNull

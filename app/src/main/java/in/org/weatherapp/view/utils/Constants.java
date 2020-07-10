@@ -2,7 +2,7 @@ package in.org.weatherapp.view.utils;
 
 public class Constants {
     public static final String BASE_URL = "http://api.weatherstack.com/";
-    public static final String ACCESS_KEY = "0bf74c77508c0f757b08d7ec6fc02e59";
+    public static final String ACCESS_KEY = "f10f39fc6a2aa11e70c839b11b77151e";
     //public static final String DAYS ="6" ;
     public static final String BASE_URL_OPEN_WEATHER = "http://api.openweathermap.org/";
     public static final String OPEN_WEATHER_KEY ="bedcdcea4a3f2387fbbc23e9914b0de1" ;
