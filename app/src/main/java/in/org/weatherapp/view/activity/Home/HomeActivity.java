@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import in.org.weatherapp.R;
 import in.org.weatherapp.view.activity.BaseActivity;
 import in.org.weatherapp.view.activity.splash.SplashActivity;
+import in.org.weatherapp.view.fragment.about.FragmentAbout;
 import in.org.weatherapp.view.fragment.forecast.WeatherForecast;
 import in.org.weatherapp.view.fragment.home.FragmentHome;
 import in.org.weatherapp.view.fragment.location.FragmentLocation;
@@ -77,14 +78,32 @@ public class HomeActivity extends BaseActivity {
         switch (item.getItemId())
         {
             case R.id.action_refresh:
-                loadFragment();
+                if(CURRENT_TAG==Constants.TAG_ABOUT)
+                    about();
+                else
+                    loadFragment();
                 return true;
             case R.id.action_share:
                 share();
                 return true;
+            case R.id.action_about:
+                about();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+
+    private void about() {
+        CURRENT_TAG=Constants.TAG_ABOUT;
+
+        getSupportActionBar().setTitle("About");
+        Fragment fragment=new FragmentAbout();
+        FragmentTransaction fragmentTransaction=
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment,"About");
+        fragmentTransaction.commitAllowingStateLoss();
 
     }
 

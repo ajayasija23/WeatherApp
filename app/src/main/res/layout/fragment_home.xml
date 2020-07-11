@@ -8,22 +8,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center">
+        android:background="@color/colorPrimary">
 
         <com.google.android.material.tabs.TabLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tabLayout"
-            android:layout_gravity="center"
-            app:tabGravity="fill"
             app:tabIndicatorColor="@android:color/holo_orange_dark"
             app:tabTextColor="@android:color/white"
+            app:tabMaxWidth="@dimen/dp_one_twenty"
             app:tabMode="scrollable"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:theme="@style/TabLayoutStyle"
-            app:tabTextAppearance="@style/TabLayoutStyle">
-
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextAppearance="@style/TabLayoutStyle"/>
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"

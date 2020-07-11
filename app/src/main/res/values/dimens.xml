@@ -22,4 +22,5 @@
     <dimen name="dp_sixty">60dp</dimen>
     <dimen name="dp_eighty">80dp</dimen>
     <dimen name="dp_ten">10dp</dimen>
+    <dimen name="dp_five_hundred">500dp</dimen>
 </resources>

@@ -31,6 +31,8 @@
     <string name="forecast">10 Day Forecast</string>
     <string name="nav_forecast">10 Day Forecast</string>
     <string name="INCHES">INCHES</string>
+    <string name="About_text">This is a Weather Pro application. It show the current weather of the day and Weather of the day with three hour interval.
+    It also shows 10 day weather forecasting</string>
 
 
     <string-array name="nav_item_titles">

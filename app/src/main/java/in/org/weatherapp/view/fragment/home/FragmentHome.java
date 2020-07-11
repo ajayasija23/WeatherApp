@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.List;
 
@@ -29,7 +30,6 @@ import in.org.weatherapp.view.utils.Constants;
 public class FragmentHome extends BaseFragment
         implements SavedPlacesRepository.FetchSavedLocations {
 
-    @BindView(R.id.tabLayout)
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
@@ -46,6 +46,8 @@ public class FragmentHome extends BaseFragment
         View view = inflater.inflate(R.layout.fragment_home,
                 container, false);
         unbinder= ButterKnife.bind(this,view);
+
+         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
 
         fetchSavedLocations=this;
         setupViewPager();

@@ -81,5 +81,8 @@ dependencies {
     //ads
     implementation 'com.google.android.gms:play-services-ads:19.2.0'
 
+    //custom tab
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+
 
 }

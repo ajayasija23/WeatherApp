@@ -69,6 +69,7 @@ public class AppLocationService implements LocationListener {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
                 e.printStackTrace();
             }
         }) ;
