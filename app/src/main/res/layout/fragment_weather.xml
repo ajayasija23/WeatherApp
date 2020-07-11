@@ -146,17 +146,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textisDay"
+                    android:id="@+id/textSunRise"
                     android:layout_below="@+id/textUVIndex"
                     android:layout_marginTop="@dimen/dp_eight"
                     android:textColor="@android:color/white"
                     android:layout_alignParentEnd="true"
-                    android:text="Is Day: yes"/>
+                    android:text="Sun Rise:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textWindDir"
-                    android:layout_below="@+id/textisDay"
+                    android:id="@+id/textSunSet"
+                    android:layout_below="@+id/textSunRise"
                     android:layout_marginTop="@dimen/dp_eight"
                     android:textColor="@android:color/white"
                     android:layout_alignParentEnd="true"

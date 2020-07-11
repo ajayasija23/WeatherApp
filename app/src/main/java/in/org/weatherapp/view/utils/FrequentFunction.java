@@ -34,7 +34,7 @@ public class FrequentFunction {
     public static double mps_to_kmph(double mps)
     {
         double kmph=(3.6 * mps);
-        return (kmph*100)/100.0;
+        return (int)(kmph*100)/100.0;
     }
     //mm to in for precipitation
     public static double MMToIn(double mm){
@@ -62,7 +62,7 @@ public class FrequentFunction {
         return finalDay;
     }
     //weather three hour interval
-    public static String getDayTime(String dateResponse) {
+    public static String getDayTime(String dateResponse, String zone) {
 
         SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm:ss");
         Date dt1=null;
@@ -72,18 +72,24 @@ public class FrequentFunction {
             e.printStackTrace();
         }
         DateFormat format2=new SimpleDateFormat("EE HH:mm");
+        format2.setTimeZone(TimeZone.getTimeZone(zone));
         String finalDay=format2.format(dt1);
         return finalDay;
     }
 
     //day with time format 12
-    public static String getDayTime12(long timestamp) {
+    public static String getDayTime12(String dateResponse,String zone) {
 
-        Timestamp ts=new Timestamp(timestamp*1000);
-
-        Date date=new Date(ts.getTime());
+        SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm:ss");
+        Date dt1=null;
+        try {
+            dt1 = format1.parse(dateResponse);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         DateFormat format2=new SimpleDateFormat("EE hh:mm a");
-        String finalDay=format2.format(date);
+        format2.setTimeZone(TimeZone.getTimeZone(zone));
+        String finalDay=format2.format(dt1);
         return finalDay;
     }
 
@@ -101,21 +107,12 @@ public class FrequentFunction {
             return "";
         return addressList.get(0).getLocality();
     }
-    public static int getDate(String dateResponse)
-    {
-        SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm:ss");
-        Date dt1=null;
-        try {
-            dt1 = format1.parse(dateResponse);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return dt1.getDate();
-    }
 
-    public static String getObservationTime(String localTime)
+
+    public static String getObservationTime(String localTime,String zone)
     {
         SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm");
+        format1.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date=null;
         try {
             date=format1.parse(localTime);
@@ -123,13 +120,15 @@ public class FrequentFunction {
             e.printStackTrace();
         }
         format1=new SimpleDateFormat("MMMM, dd HH:mm");
+        format1.setTimeZone(TimeZone.getTimeZone(zone));
         String observationTime=format1.format(date);
         return observationTime;
 
     }
-    public static String getObservationTime12(String localTime)
+    public static String getObservationTime12(String localTime,String zone)
     {
         SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm");
+            format1.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date=null;
         try {
             date=format1.parse(localTime);
@@ -137,19 +136,17 @@ public class FrequentFunction {
             e.printStackTrace();
         }
         format1=new SimpleDateFormat("MMMM, dd hh:mm a");
+        format1.setTimeZone(TimeZone.getTimeZone(zone));
         String observationTime=format1.format(date);
         return observationTime;
     }
-    public static String getLocalTime12(String localTime)
+    public static String getLocalTime12(String zone)
     {
-        SimpleDateFormat format1=new SimpleDateFormat(	"yyyy-MM-dd HH:mm");
-        Date date=null;
-        try {
-            date=format1.parse(localTime);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        format1=new SimpleDateFormat("dd-MM-yy  h:mm a");
+
+        Date date=new Date();
+
+        DateFormat format1=new SimpleDateFormat("dd-MM-yy  h:mm a");
+        format1.setTimeZone(TimeZone.getTimeZone(zone));
         String observationTime=format1.format(date);
         return observationTime;
 
@@ -165,6 +162,33 @@ public class FrequentFunction {
             e.printStackTrace();
         }
         format1=new SimpleDateFormat("MMMM, dd ");
+        String observationTime=format1.format(date);
+        return observationTime;
+
+    }
+
+    public static String getLocalTime(String zone) {
+
+        Date date=new Date();
+
+        DateFormat format1=new SimpleDateFormat("dd-MM-yy  HH:mm");
+        format1.setTimeZone(TimeZone.getTimeZone(zone));
+        String observationTime=format1.format(date);
+        return observationTime;
+    }
+
+    public static String changeTimeZone(String sunrise,String zone)
+    {
+        SimpleDateFormat format1=new SimpleDateFormat(	"HH:mm");
+        format1.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date date=null;
+        try {
+            date=format1.parse(sunrise);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        format1=new SimpleDateFormat("hh:mm a");
+        format1.setTimeZone(TimeZone.getTimeZone(zone));
         String observationTime=format1.format(date);
         return observationTime;
 

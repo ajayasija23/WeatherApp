@@ -4,381 +4,475 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+public class StackWeather
+{
 
-    public class StackWeather
-    {
 
+    /**
+     * data : [{"rh":39.7,"pod":"n","lon":75.9,"pres":969.712,"timezone":"Asia/Kolkata","ob_time":"2020-07-11 16:00","country_code":"IN","clouds":22,"ts":1594483235,"solar_rad":0,"state_code":"10","city_name":"Tohāna","wind_spd":4.22419,"wind_cdir_full":"south-southwest","wind_cdir":"SSW","slp":993.46,"vis":24,"h_angle":-90,"sunset":"13:52","dni":0,"dewpt":21.1,"snow":0,"uv":0,"precip":0,"wind_dir":209,"sunrise":"00:02","ghi":0,"dhi":0,"aqi":81,"lat":29.7,"weather":{"icon":"c02n","code":802,"description":"Scattered Clouds"},"datetime":"2020-07-11:15","temp":37,"station":"AV559","elev_angle":-21.92,"app_temp":41}]
+     * count : 1
+     */
+
+    @SerializedName("count")
+    private double count;
+    @SerializedName("data")
+    private List<DataBean> data;
+
+    public double getCount() {
+        return count;
+    }
+
+    public void setCount(double count) {
+        this.count = count;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
         /**
-         * request : {"type":"City","query":"New York, United States of America","language":"en","unit":"m"}
-         * location : {"name":"New York","country":"United States of America","region":"New York","lat":"40.714","lon":"-74.006","timezone_id":"America/New_York","localtime":"2020-07-06 12:23","localtime_epoch":1594038180,"utc_offset":"-4.0"}
-         * current : {"observation_time":"04:23 PM","temperature":32,"weather_code":116,"weather_icons":["https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"],"weather_descriptions":["Partly cloudy"],"wind_speed":15,"wind_degree":50,"wind_dir":"NE","pressure":1017,"precip":0,"humidity":33,"cloudcover":25,"feelslike":32,"uv_index":7,"visibility":16,"is_day":"yes"}
+         * rh : 39.7
+         * pod : n
+         * lon : 75.9
+         * pres : 969.712
+         * timezone : Asia/Kolkata
+         * ob_time : 2020-07-11 16:00
+         * country_code : IN
+         * clouds : 22
+         * ts : 1594483235
+         * solar_rad : 0
+         * state_code : 10
+         * city_name : Tohāna
+         * wind_spd : 4.22419
+         * wind_cdir_full : south-southwest
+         * wind_cdir : SSW
+         * slp : 993.46
+         * vis : 24
+         * h_angle : -90
+         * sunset : 13:52
+         * dni : 0
+         * dewpt : 21.1
+         * snow : 0
+         * uv : 0
+         * precip : 0
+         * wind_dir : 209
+         * sunrise : 00:02
+         * ghi : 0
+         * dhi : 0
+         * aqi : 81
+         * lat : 29.7
+         * weather : {"icon":"c02n","code":802,"description":"Scattered Clouds"}
+         * datetime : 2020-07-11:15
+         * temp : 37
+         * station : AV559
+         * elev_angle : -21.92
+         * app_temp : 41
          */
 
-        @SerializedName("request")
-        private RequestBean request;
-        @SerializedName("location")
-        private LocationBean location;
-        @SerializedName("current")
-        private CurrentBean current;
+        @SerializedName("rh")
+        private double rh;
+        @SerializedName("pod")
+        private String pod;
+        @SerializedName("lon")
+        private double lon;
+        @SerializedName("pres")
+        private double pres;
+        @SerializedName("timezone")
+        private String timezone;
+        @SerializedName("ob_time")
+        private String obTime;
+        @SerializedName("country_code")
+        private String countryCode;
+        @SerializedName("clouds")
+        private double clouds;
+        @SerializedName("ts")
+        private long ts;
+        @SerializedName("solar_rad")
+        private double solarRad;
+        @SerializedName("state_code")
+        private String stateCode;
+        @SerializedName("city_name")
+        private String cityName;
+        @SerializedName("wind_spd")
+        private double windSpd;
+        @SerializedName("wind_cdir_full")
+        private String windCdirFull;
+        @SerializedName("wind_cdir")
+        private String windCdir;
+        @SerializedName("slp")
+        private double slp;
+        @SerializedName("vis")
+        private double vis;
+        @SerializedName("h_angle")
+        private double hAngle;
+        @SerializedName("sunset")
+        private String sunset;
+        @SerializedName("dni")
+        private double dni;
+        @SerializedName("dewpt")
+        private double dewpt;
+        @SerializedName("snow")
+        private double snow;
+        @SerializedName("uv")
+        private double uv;
+        @SerializedName("precip")
+        private double precip;
+        @SerializedName("wind_dir")
+        private double windDir;
+        @SerializedName("sunrise")
+        private String sunrise;
+        @SerializedName("ghi")
+        private double ghi;
+        @SerializedName("dhi")
+        private double dhi;
+        @SerializedName("aqi")
+        private double aqi;
+        @SerializedName("lat")
+        private double lat;
+        @SerializedName("weather")
+        private WeatherBean weather;
+        @SerializedName("datetime")
+        private String datetime;
+        @SerializedName("temp")
+        private double temp;
+        @SerializedName("station")
+        private String station;
+        @SerializedName("elev_angle")
+        private double elevAngle;
+        @SerializedName("app_temp")
+        private double appTemp;
 
-        public RequestBean getRequest() {
-            return request;
+        public double getRh() {
+            return rh;
         }
 
-        public void setRequest(RequestBean request) {
-            this.request = request;
+        public void setRh(double rh) {
+            this.rh = rh;
         }
 
-        public LocationBean getLocation() {
-            return location;
+        public String getPod() {
+            return pod;
         }
 
-        public void setLocation(LocationBean location) {
-            this.location = location;
+        public void setPod(String pod) {
+            this.pod = pod;
         }
 
-        public CurrentBean getCurrent() {
-            return current;
+        public double getLon() {
+            return lon;
         }
 
-        public void setCurrent(CurrentBean current) {
-            this.current = current;
+        public void setLon(double lon) {
+            this.lon = lon;
         }
 
-        public static class RequestBean {
+        public double getPres() {
+            return (int) (pres*100)/100.0;
+        }
+
+        public void setPres(double pres) {
+            this.pres = pres;
+        }
+
+        public String getTimezone() {
+            return timezone;
+        }
+
+        public void setTimezone(String timezone) {
+            this.timezone = timezone;
+        }
+
+        public String getObTime() {
+            return obTime;
+        }
+
+        public void setObTime(String obTime) {
+            this.obTime = obTime;
+        }
+
+        public String getCountryCode() {
+            return countryCode;
+        }
+
+        public void setCountryCode(String countryCode) {
+            this.countryCode = countryCode;
+        }
+
+        public double getClouds() {
+            return clouds;
+        }
+
+        public void setClouds(double clouds) {
+            this.clouds = clouds;
+        }
+
+        public long getTs() {
+            return ts;
+        }
+
+        public void setTs(long ts) {
+            this.ts = ts;
+        }
+
+        public double getSolarRad() {
+            return solarRad;
+        }
+
+        public void setSolarRad(double solarRad) {
+            this.solarRad = solarRad;
+        }
+
+        public String getStateCode() {
+            return stateCode;
+        }
+
+        public void setStateCode(String stateCode) {
+            this.stateCode = stateCode;
+        }
+
+        public String getCityName() {
+            return cityName;
+        }
+
+        public void setCityName(String cityName) {
+            this.cityName = cityName;
+        }
+
+        public double getWindSpd() {
+            return windSpd;
+        }
+
+        public void setWindSpd(double windSpd) {
+            this.windSpd = windSpd;
+        }
+
+        public String getWindCdirFull() {
+            return windCdirFull;
+        }
+
+        public void setWindCdirFull(String windCdirFull) {
+            this.windCdirFull = windCdirFull;
+        }
+
+        public String getWindCdir() {
+            return windCdir;
+        }
+
+        public void setWindCdir(String windCdir) {
+            this.windCdir = windCdir;
+        }
+
+        public double getSlp() {
+            return slp;
+        }
+
+        public void setSlp(double slp) {
+            this.slp = slp;
+        }
+
+        public double getVis() {
+            return vis;
+        }
+
+        public void setVis(double vis) {
+            this.vis = vis;
+        }
+
+        public double getHAngle() {
+            return hAngle;
+        }
+
+        public void setHAngle(double hAngle) {
+            this.hAngle = hAngle;
+        }
+
+        public String getSunset() {
+            return sunset;
+        }
+
+        public void setSunset(String sunset) {
+            this.sunset = sunset;
+        }
+
+        public double getDni() {
+            return dni;
+        }
+
+        public void setDni(double dni) {
+            this.dni = dni;
+        }
+
+        public double getDewpt() {
+            return dewpt;
+        }
+
+        public void setDewpt(double dewpt) {
+            this.dewpt = dewpt;
+        }
+
+        public double getSnow() {
+            return snow;
+        }
+
+        public void setSnow(double snow) {
+            this.snow = snow;
+        }
+
+        public double getUv() {
+            return uv;
+        }
+
+        public void setUv(double uv) {
+            this.uv = uv;
+        }
+
+        public double getPrecip() {
+            return precip;
+        }
+
+        public void setPrecip(double precip) {
+            this.precip = precip;
+        }
+
+        public double getWindDir() {
+            return windDir;
+        }
+
+        public void setWindDir(double windDir) {
+            this.windDir = windDir;
+        }
+
+        public String getSunrise() {
+            return sunrise;
+        }
+
+        public void setSunrise(String sunrise) {
+            this.sunrise = sunrise;
+        }
+
+        public double getGhi() {
+            return ghi;
+        }
+
+        public void setGhi(double ghi) {
+            this.ghi = ghi;
+        }
+
+        public double getDhi() {
+            return dhi;
+        }
+
+        public void setDhi(double dhi) {
+            this.dhi = dhi;
+        }
+
+        public double getAqi() {
+            return aqi;
+        }
+
+        public void setAqi(double aqi) {
+            this.aqi = aqi;
+        }
+
+        public double getLat() {
+            return lat;
+        }
+
+        public void setLat(double lat) {
+            this.lat = lat;
+        }
+
+        public WeatherBean getWeather() {
+            return weather;
+        }
+
+        public void setWeather(WeatherBean weather) {
+            this.weather = weather;
+        }
+
+        public String getDatetime() {
+            return datetime;
+        }
+
+        public void setDatetime(String datetime) {
+            this.datetime = datetime;
+        }
+
+        public double getTemp() {
+            return temp;
+        }
+
+        public void setTemp(double temp) {
+            this.temp = temp;
+        }
+
+        public String getStation() {
+            return station;
+        }
+
+        public void setStation(String station) {
+            this.station = station;
+        }
+
+        public double getElevAngle() {
+            return elevAngle;
+        }
+
+        public void setElevAngle(double elevAngle) {
+            this.elevAngle = elevAngle;
+        }
+
+        public double getAppTemp() {
+            return appTemp;
+        }
+
+        public void setAppTemp(double appTemp) {
+            this.appTemp = appTemp;
+        }
+
+        public static class WeatherBean {
             /**
-             * type : City
-             * query : New York, United States of America
-             * language : en
-             * unit : m
+             * icon : c02n
+             * code : 802
+             * description : Scattered Clouds
              */
 
-            @SerializedName("type")
-            private String type;
-            @SerializedName("query")
-            private String query;
-            @SerializedName("language")
-            private String language;
-            @SerializedName("unit")
-            private String unit;
+            @SerializedName("icon")
+            private String icon;
+            @SerializedName("code")
+            private double code;
+            @SerializedName("description")
+            private String description;
 
-            public String getType() {
-                return type;
+            public String getIcon() {
+                return icon;
             }
 
-            public void setType(String type) {
-                this.type = type;
+            public void setIcon(String icon) {
+                this.icon = icon;
             }
 
-            public String getQuery() {
-                return query;
+            public double getCode() {
+                return code;
             }
 
-            public void setQuery(String query) {
-                this.query = query;
+            public void setCode(double code) {
+                this.code = code;
             }
 
-            public String getLanguage() {
-                return language;
+            public String getDescription() {
+                return description;
             }
 
-            public void setLanguage(String language) {
-                this.language = language;
-            }
-
-            public String getUnit() {
-                return unit;
-            }
-
-            public void setUnit(String unit) {
-                this.unit = unit;
-            }
-        }
-
-        public static class LocationBean {
-            /**
-             * name : New York
-             * country : United States of America
-             * region : New York
-             * lat : 40.714
-             * lon : -74.006
-             * timezone_id : America/New_York
-             * localtime : 2020-07-06 12:23
-             * localtime_epoch : 1594038180
-             * utc_offset : -4.0
-             */
-
-            @SerializedName("name")
-            private String name;
-            @SerializedName("country")
-            private String country;
-            @SerializedName("region")
-            private String region;
-            @SerializedName("lat")
-            private String lat;
-            @SerializedName("lon")
-            private String lon;
-            @SerializedName("timezone_id")
-            private String timezoneId;
-            @SerializedName("localtime")
-            private String localtime;
-            @SerializedName("localtime_epoch")
-            private double localtimeEpoch;
-            @SerializedName("utc_offset")
-            private String utcOffset;
-
-            public String getName() {
-                return name;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public String getCountry() {
-                return country;
-            }
-
-            public void setCountry(String country) {
-                this.country = country;
-            }
-
-            public String getRegion() {
-                return region;
-            }
-
-            public void setRegion(String region) {
-                this.region = region;
-            }
-
-            public String getLat() {
-                return lat;
-            }
-
-            public void setLat(String lat) {
-                this.lat = lat;
-            }
-
-            public String getLon() {
-                return lon;
-            }
-
-            public void setLon(String lon) {
-                this.lon = lon;
-            }
-
-            public String getTimezoneId() {
-                return timezoneId;
-            }
-
-            public void setTimezoneId(String timezoneId) {
-                this.timezoneId = timezoneId;
-            }
-
-            public String getLocaltime() {
-                return localtime;
-            }
-
-            public void setLocaltime(String localtime) {
-                this.localtime = localtime;
-            }
-
-            public double getLocaltimeEpoch() {
-                return localtimeEpoch;
-            }
-
-            public void setLocaltimeEpoch(double localtimeEpoch) {
-                this.localtimeEpoch = localtimeEpoch;
-            }
-
-            public String getUtcOffset() {
-                return utcOffset;
-            }
-
-            public void setUtcOffset(String utcOffset) {
-                this.utcOffset = utcOffset;
-            }
-        }
-
-        public static class CurrentBean {
-            /**
-             * observation_time : 04:23 PM
-             * temperature : 32
-             * weather_code : 116
-             * weather_icons : ["https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"]
-             * weather_descriptions : ["Partly cloudy"]
-             * wind_speed : 15
-             * wind_degree : 50
-             * wind_dir : NE
-             * pressure : 1017
-             * precip : 0
-             * humidity : 33
-             * cloudcover : 25
-             * feelslike : 32
-             * uv_index : 7
-             * visibility : 16
-             * is_day : yes
-             */
-
-            @SerializedName("observation_time")
-            private String observationTime;
-            @SerializedName("temperature")
-            private double temperature;
-            @SerializedName("weather_code")
-            private double weatherCode;
-            @SerializedName("wind_speed")
-            private double windSpeed;
-            @SerializedName("wind_degree")
-            private double windDegree;
-            @SerializedName("wind_dir")
-            private String windDir;
-            @SerializedName("pressure")
-            private double pressure;
-            @SerializedName("precip")
-            private double precip;
-            @SerializedName("humidity")
-            private double humidity;
-            @SerializedName("cloudcover")
-            private double cloudcover;
-            @SerializedName("feelslike")
-            private double feelslike;
-            @SerializedName("uv_index")
-            private double uvIndex;
-            @SerializedName("visibility")
-            private double visibility;
-            @SerializedName("is_day")
-            private String isDay;
-            @SerializedName("weather_icons")
-            private List<String> weatherIcons;
-            @SerializedName("weather_descriptions")
-            private List<String> weatherDescriptions;
-
-            public String getObservationTime() {
-                return observationTime;
-            }
-
-            public void setObservationTime(String observationTime) {
-                this.observationTime = observationTime;
-            }
-
-            public double getTemperature() {
-                return temperature;
-            }
-
-            public void setTemperature(double temperature) {
-                this.temperature = temperature;
-            }
-
-            public double getWeatherCode() {
-                return weatherCode;
-            }
-
-            public void setWeatherCode(double weatherCode) {
-                this.weatherCode = weatherCode;
-            }
-
-            public double getWindSpeed() {
-                return windSpeed;
-            }
-
-            public void setWindSpeed(double windSpeed) {
-                this.windSpeed = windSpeed;
-            }
-
-            public double getWindDegree() {
-                return windDegree;
-            }
-
-            public void setWindDegree(double windDegree) {
-                this.windDegree = windDegree;
-            }
-
-            public String getWindDir() {
-                return windDir;
-            }
-
-            public void setWindDir(String windDir) {
-                this.windDir = windDir;
-            }
-
-            public double getPressure() {
-                return pressure;
-            }
-
-            public void setPressure(double pressure) {
-                this.pressure = pressure;
-            }
-
-            public double getPrecip() {
-                return precip;
-            }
-
-            public void setPrecip(double precip) {
-                this.precip = precip;
-            }
-
-            public double getHumidity() {
-                return humidity;
-            }
-
-            public void setHumidity(double humidity) {
-                this.humidity = humidity;
-            }
-
-            public double getCloudcover() {
-                return cloudcover;
-            }
-
-            public void setCloudcover(double cloudcover) {
-                this.cloudcover = cloudcover;
-            }
-
-            public double getFeelslike() {
-                return feelslike;
-            }
-
-            public void setFeelslike(double feelslike) {
-                this.feelslike = feelslike;
-            }
-
-            public double getUvIndex() {
-                return uvIndex;
-            }
-
-            public void setUvIndex(double uvIndex) {
-                this.uvIndex = uvIndex;
-            }
-
-            public double getVisibility() {
-                return visibility;
-            }
-
-            public void setVisibility(double visibility) {
-                this.visibility = visibility;
-            }
-
-            public String getIsDay() {
-                return isDay;
-            }
-
-            public void setIsDay(String isDay) {
-                this.isDay = isDay;
-            }
-
-            public List<String> getWeatherIcons() {
-                return weatherIcons;
-            }
-
-            public void setWeatherIcons(List<String> weatherIcons) {
-                this.weatherIcons = weatherIcons;
-            }
-
-            public List<String> getWeatherDescriptions() {
-                return weatherDescriptions;
-            }
-
-            public void setWeatherDescriptions(List<String> weatherDescriptions) {
-                this.weatherDescriptions = weatherDescriptions;
+            public void setDescription(String description) {
+                this.description = description;
             }
         }
     }
+}
+

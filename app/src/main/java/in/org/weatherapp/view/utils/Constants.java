@@ -27,6 +27,7 @@ public class Constants {
     public static final String TIME_FORMAT_12 = "TWELVE";
     public static final String TIME_FORMAT = "time_format";
     public static final String TAG_ABOUT = "ABOUT";
+    public static String TIME_ZONE = "";
 
     public static int I =0 ;
     public static final String PLACES_API_KEY="AIzaSyBUPt8akkRj21qGnefJ4KMlj2nNI3uA2kU";

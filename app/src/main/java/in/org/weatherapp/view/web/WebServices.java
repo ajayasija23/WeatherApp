@@ -40,7 +40,7 @@ public class WebServices {
                                     .build();
         gson=new GsonBuilder().setLenient().create();
         stackWeatherApi = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(Constants.WEATHERBIT_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -69,7 +69,8 @@ public class WebServices {
 
     public void getWeatherData(WeatherHandler weatherHandler, String lat, String lon, String key) {
 
-        Call<StackWeather> callBack= stackWeatherApi.getWeather(key,lon+","+lat);
+        Call<StackWeather> callBack= stackWeatherApi.
+                getWeather(lon,lat,Constants.WEATHERBIT_API_KEY);
         callBack.enqueue(new Callback<StackWeather>() {
             @Override
             public void onResponse(Call<StackWeather> call, Response<StackWeather> response) {

@@ -1,5 +1,6 @@
 package in.org.weatherapp.view.fragment.weather;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,10 +62,9 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
     private TextView textVisibility;
     private TextView textCloudCover;
     private TextView textWind;
-    private TextView textMaxMin;
-    private TextView textIsDay;
+    private TextView textSunRise;
     private RecyclerView recyclerViewFiveDays;
-    private TextView textWindDir;
+    private TextView textSunSet;
     private AdView adView;
 
 
@@ -95,9 +95,9 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
         textVisibility = view.findViewById(R.id.textVisibility);
         textCloudCover = view.findViewById(R.id.textCloudCover);
         textWind = view.findViewById(R.id.textWind);
-        textIsDay=view.findViewById(R.id.textisDay);
+        textSunRise=view.findViewById(R.id.textSunRise);
         recyclerViewFiveDays=view.findViewById(R.id.recyclerFiveDays);
-        textWindDir=view.findViewById(R.id.textWindDir);
+        textSunSet=view.findViewById(R.id.textSunSet);
         adView=(AdView) view.findViewById(R.id.adView);
 
 
@@ -146,53 +146,55 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
     @Override
     public void onSuccessWeather(StackWeather stackWeather) {
 
-        String iconUrl= stackWeather.getCurrent().getWeatherIcons().get(0);
+        Constants.TIME_ZONE=stackWeather.getData().get(0).getTimezone();
+
+        String iconUrl= "https://www.weatherbit.io/static/img/icons/"+stackWeather.getData().get(0).getWeather().getIcon()+".png";
         Glide.with(getActivity()).load(iconUrl).into(imageViewWeather);
-        textCityAddress.setText(""+ stackWeather.getLocation().getName());
+        textCityAddress.setText(FrequentFunction.getCityName(getActivity(),stackWeather.getData().get(0).getLat(),stackWeather.getData().get(0).getLon()));
         //observation time
         if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_12))
-            textViewLastUpdate.setText("Last Updated:"+ FrequentFunction.getObservationTime12(stackWeather.getLocation().getLocaltime()));
+            textViewLastUpdate.setText("Last Updated: "+ FrequentFunction.getObservationTime12(stackWeather.getData().get(0).getObTime(),Constants.TIME_ZONE));
         else
-            textViewLastUpdate.setText("Last Updated:"+ FrequentFunction.getObservationTime(stackWeather.getLocation().getLocaltime()));
+            textViewLastUpdate.setText("Last Updated: "+ FrequentFunction.getObservationTime(stackWeather.getData().get(0).getObTime(),Constants.TIME_ZONE));
         //local time
         if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_12))
-            textTime.setText("Local Time: "+FrequentFunction.getLocalTime12(stackWeather.getLocation().getLocaltime()));
+            textTime.setText("Local Time: "+FrequentFunction.getLocalTime12(Constants.TIME_ZONE));
         else
-            textTime.setText("Local Time: "+ stackWeather.getLocation().getLocaltime());
+            textTime.setText("Local Time: "+FrequentFunction.getLocalTime(Constants.TIME_ZONE) );
         //temperature
         if(SharedPrefers.getDataFromPrefs(Constants.TEMPERATURE).equalsIgnoreCase(Constants.FARENHEIGHT))
-            textTemprature.setText("Temp: "+FrequentFunction.celsiusToFahrenheit(stackWeather.getCurrent().getTemperature())+"°F");
+            textTemprature.setText("Temp: "+FrequentFunction.celsiusToFahrenheit(stackWeather.getData().get(0).getTemp())+"°F");
         else
-            textTemprature.setText("Temp: "+ stackWeather.getCurrent().getTemperature()+"°C");
+            textTemprature.setText("Temp: "+ stackWeather.getData().get(0).getTemp()+"°C");
         //feels like
         if(SharedPrefers.getDataFromPrefs(Constants.TEMPERATURE).equalsIgnoreCase(Constants.FARENHEIGHT))
-            textFeelsLike.setText(FrequentFunction.celsiusToFahrenheit(stackWeather.getCurrent().getFeelslike())+" °F");
+            textFeelsLike.setText("Feels Like: "+FrequentFunction.celsiusToFahrenheit(stackWeather.getData().get(0).getAppTemp())+" °F");
         else
-            textFeelsLike.setText(stackWeather.getCurrent().getFeelslike()+" °C");
+            textFeelsLike.setText("Feels Like: "+stackWeather.getData().get(0).getAppTemp()+" °C");
         //description
-        textWeatherInfo.setText(stackWeather.getCurrent().getWeatherDescriptions().get(0));
+        textWeatherInfo.setText(stackWeather.getData().get(0).getWeather().getDescription());
             //Precip
         if(SharedPrefers.getDataFromPrefs(Constants.PRECIP_FORMAT).equalsIgnoreCase(Constants.PRECIP_IN))
-            textPerception.setText("Precip: "+FrequentFunction.MMToIn(stackWeather.getCurrent().getPrecip())+" In");
+            textPerception.setText("Precip: "+FrequentFunction.MMToIn(stackWeather.getData().get(0).getPrecip())+" In");
         else
-            textPerception.setText("Precip: "+ stackWeather.getCurrent().getPrecip()+" MM");
+            textPerception.setText("Precip: "+ stackWeather.getData().get(0).getPrecip()+" MM");
             //pressure
         if(SharedPrefers.getDataFromPrefs(Constants.PRESSURE_FORMAT).equalsIgnoreCase(Constants.PRESSURE_INCHES))
-            textPressure.setText("Pressure: "+FrequentFunction.MbToIn(stackWeather.getCurrent().getPressure())+" Inches");
+            textPressure.setText("Pressure: "+FrequentFunction.MbToIn(stackWeather.getData().get(0).getPres())+" Inches");
         else
-            textPressure.setText("Pressure "+ stackWeather.getCurrent().getPressure()+" MB");
-        textUVIndex.setText("UVIndex: "+ stackWeather.getCurrent().getUvIndex());
-        textHumidity.setText("Humidity: "+ stackWeather.getCurrent().getHumidity()+"%");
-        textVisibility.setText("Visibility: "+ stackWeather.getCurrent().getVisibility()+" km");
-        textCloudCover.setText("Cloud Cover: "+ stackWeather.getCurrent().getCloudcover()+" %");
+            textPressure.setText("Pressure: "+ stackWeather.getData().get(0).getPres()+" MB");
+        textUVIndex.setText("UVIndex: "+ stackWeather.getData().get(0).getUv());
+        textHumidity.setText("Humidity: "+ stackWeather.getData().get(0).getRh()+"%");
+        textVisibility.setText("Visibility: "+ stackWeather.getData().get(0).getVis()+" km");
+        textCloudCover.setText("Cloud Cover: "+ stackWeather.getData().get(0).getClouds()+" %");
         //wind
         if(SharedPrefers.getDataFromPrefs(Constants.WIND_SPEED).equalsIgnoreCase(Constants.WIND_METER))
-            textWind.setText("Wind: "+FrequentFunction.kmphToMps(stackWeather.getCurrent().getWindSpeed())+" m/s");
+            textWind.setText("Wind: "+stackWeather.getData().get(0).getWindSpd()+" m/s");
         else
-        textWind.setText("Wind: "+ stackWeather.getCurrent().getWindSpeed()+" kmph");
+        textWind.setText("Wind: "+ FrequentFunction.mps_to_kmph(stackWeather.getData().get(0).getWindSpd())+" kmph");
 
-        textIsDay.setText("Is Day: "+ stackWeather.getCurrent().getIsDay());
-        textWindDir.setText("Wind Dir: "+ stackWeather.getCurrent().getWindDir());
+        textSunRise.setText("Sun Rise: "+ FrequentFunction.changeTimeZone(stackWeather.getData().get(0).getSunrise(),Constants.TIME_ZONE));
+        textSunSet.setText("Sun Set: "+ FrequentFunction.changeTimeZone(stackWeather.getData().get(0).getSunset(),Constants.TIME_ZONE));
 
     }
 
@@ -207,6 +209,7 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
     }
 
     private void setAdapter(List<OpenWeather.ListBean> listBean) {
+
 
         FiveDaysWeatherAdapter fiveDaysWeatherAdapter=new FiveDaysWeatherAdapter(listBean);
         recyclerViewFiveDays.setAdapter(fiveDaysWeatherAdapter);

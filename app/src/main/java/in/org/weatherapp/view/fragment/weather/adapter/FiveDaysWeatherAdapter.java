@@ -52,9 +52,9 @@ public class FiveDaysWeatherAdapter extends RecyclerView.Adapter<FiveDaysWeather
         Glide.with(mContext).load(iconUrl).into(holder.imageViewWeather);
 
         if(SharedPrefers.getDataFromPrefs(Constants.TIME_FORMAT).equalsIgnoreCase(Constants.TIME_FORMAT_12))
-            holder.textViewDays.setText(FrequentFunction.getDayTime12(listBeanList.get(position+1).getDt()));
+            holder.textViewDays.setText(FrequentFunction.getDayTime12(listBeanList.get(position+1).getDtTxt(),Constants.TIME_ZONE));
         else
-            holder.textViewDays.setText(FrequentFunction.getDayTime(listBeanList.get(position+1).getDtTxt()));
+            holder.textViewDays.setText(FrequentFunction.getDayTime(listBeanList.get(position+1).getDtTxt(),Constants.TIME_ZONE));
     }
 
     @Override
