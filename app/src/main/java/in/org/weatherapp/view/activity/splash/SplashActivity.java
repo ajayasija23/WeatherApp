@@ -43,7 +43,7 @@ public class SplashActivity extends BaseActivity {
     private String [] permission={Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
     private LocationSettingsRequest mLocationSettingRequest;
     private SettingsClient mSettingClient;
-    public static AppLocationService appLocationService;
+    public  AppLocationService appLocationService;
 
 
     @BindView(R.id.imageViewSplash)
@@ -67,6 +67,7 @@ public class SplashActivity extends BaseActivity {
         }
         else
         {
+            appLocationService=new AppLocationService(this);
             navigateToHomeScreen();
         }
 
@@ -129,6 +130,7 @@ public class SplashActivity extends BaseActivity {
             switch (resultCode)
             {
                 case RESULT_OK:
+                    appLocationService=new AppLocationService(this);
                     navigateToHomeScreen();
                     break;
                 case RESULT_CANCELED:
@@ -146,7 +148,7 @@ public class SplashActivity extends BaseActivity {
 
     public void navigateToHomeScreen()
     {
-        appLocationService=new AppLocationService(this);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

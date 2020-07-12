@@ -8,45 +8,38 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import in.org.weatherapp.view.MyApp;
 import in.org.weatherapp.view.utils.FrequentFunction;
 
 public class AppLocationService implements LocationListener {
 
-    private final Context mContext;
-    private final LocationManager mLocationManager;
-    private Criteria criteria = new Criteria();
-    private String provider;
+    private FusedLocationProviderClient fusedLocationClient;
+    private Context mContext;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
 
     public AppLocationService(Context context) {
-        this.mContext = context;
-        mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        boolean isNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        boolean isGpsEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        if (isGpsEnabled)
-            criteria.setAccuracy(Criteria.ACCURACY_FINE);
-        if (isNetworkEnabled)
-            criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+        mContext = context;
 
-        provider = mLocationManager.getBestProvider(criteria, true);
-        getLastLocation();
-    }
-
-    private void getLastLocation() {
-
-        FusedLocationProviderClient fusedLocationProviderClient =
-                LocationServices.getFusedLocationProviderClient(mContext);
-        if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
+        if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -56,33 +49,68 @@ public class AppLocationService implements LocationListener {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+        fusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
-            public void onSuccess(Location location) {
-                if(location!=null) {
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
                     MyApp.latitude = location.getLatitude();
                     MyApp.longitude = location.getLongitude();
-                    MyApp.cityName= FrequentFunction.getCityName
-                            (mContext,location.getLatitude(),location.getLongitude());
+                    MyApp.cityName = FrequentFunction.getCityName(mContext, MyApp.latitude, MyApp.longitude);
+                } else {
+                    createLocationRequest();
+                    createLocationCallback();
+                    if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                            && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    fusedLocationClient.requestLocationUpdates(locationRequest,
+                            locationCallback,
+                            Looper.getMainLooper());
                 }
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+        });
 
-                e.printStackTrace();
-            }
-        }) ;
     }
+
+    private void createLocationCallback() {
+        locationCallback=new LocationCallback(){
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                Location location=locationResult.getLastLocation();
+                MyApp.latitude = location.getLatitude();
+                MyApp.longitude = location.getLongitude();
+                MyApp.cityName = FrequentFunction.getCityName(mContext, MyApp.latitude, MyApp.longitude);
+
+            }
+        };
+
+    }
+
+    protected void createLocationRequest() {
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+
 
     @Override
     public void onLocationChanged(Location location) {
-        if(location!=null) {
-            MyApp.latitude = location.getLatitude();
-            MyApp.longitude = location.getLongitude();
-            MyApp.cityName= FrequentFunction.getCityName
-                    (mContext,location.getLatitude(),location.getLongitude());
-        }
+        MyApp.latitude=location.getLatitude();
+        MyApp.longitude=location.getLongitude();
+        MyApp.cityName=FrequentFunction.getCityName(mContext,MyApp.latitude,MyApp.longitude);
+
     }
 
     @Override
@@ -98,11 +126,5 @@ public class AppLocationService implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
-    }
-    public void stopGps()
-    {
-        if(mLocationManager!=null) {
-             mLocationManager.removeUpdates(AppLocationService.this);
-        }
     }
 }

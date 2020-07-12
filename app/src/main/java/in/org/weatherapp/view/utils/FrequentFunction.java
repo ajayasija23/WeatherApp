@@ -103,9 +103,10 @@ public class FrequentFunction {
             e.printStackTrace();
         }
 
-        if(addressList==null)
+        if(addressList.isEmpty())
             return "";
-        return addressList.get(0).getLocality();
+        else
+            return addressList.get(0).getLocality();
     }
 
 

@@ -28,6 +28,7 @@ import in.org.weatherapp.view.fragment.forecast.WeatherForecast;
 import in.org.weatherapp.view.fragment.home.FragmentHome;
 import in.org.weatherapp.view.fragment.location.FragmentLocation;
 import in.org.weatherapp.view.fragment.setting.FragmentSetting;
+import in.org.weatherapp.view.services.AppLocationService;
 import in.org.weatherapp.view.utils.Constants;
 
 public class HomeActivity extends BaseActivity {
@@ -44,12 +45,10 @@ public class HomeActivity extends BaseActivity {
     private int mNavIndex = 0;
     private String CURRENT_TAG = Constants.TAG_HOME;
     private Handler mHandler;
-    private SplashActivity splashActivity;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        splashActivity=new SplashActivity();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
