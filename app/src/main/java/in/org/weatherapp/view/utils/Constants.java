@@ -2,10 +2,10 @@ package in.org.weatherapp.view.utils;
 
 public class Constants {
     public static final String BASE_URL = "http://api.weatherstack.com/";
-    public static final String ACCESS_KEY = "f10f39fc6a2aa11e70c839b11b77151e";
+    public static final String ACCESS_KEY = "your key";
     //public static final String DAYS ="6" ;
     public static final String BASE_URL_OPEN_WEATHER = "http://api.openweathermap.org/";
-    public static final String OPEN_WEATHER_KEY ="bedcdcea4a3f2387fbbc23e9914b0de1" ;
+    public static final String OPEN_WEATHER_KEY ="your key" ;
     public static final int AUTO_COMPLETE_REQUEST_CODE = 100;
     public static final String TEMP_UNIT="metric";
     public static final String DATE_FORMAT = "date_format";
@@ -30,11 +30,11 @@ public class Constants {
     public static String TIME_ZONE = "";
 
     public static int I =0 ;
-    public static final String PLACES_API_KEY="AIzaSyBUPt8akkRj21qGnefJ4KMlj2nNI3uA2kU";
+    public static final String PLACES_API_KEY="your places api key";
     public static String TAG_HOME="HOME";
     public static String TAG_MANAGE_LOCATION="MANAGE_LOCATIONS";
     public static String TAG_SETTINGS="SETTINGS";
     public static String TAG_FORECAST = "FORECAST";
-    public static String WEATHERBIT_API_KEY = "026ceea3bbb9472bb07138d7f89172bd";
+    public static String WEATHERBIT_API_KEY = "your key";
     public static String WEATHERBIT_BASE_URL= "http://api.weatherbit.io/";
 }
